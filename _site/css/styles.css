@@ -1,0 +1,270 @@
+/* Base styles with variables for both light and dark mode */
+:root {
+  --bg-color: #f9f9f9;
+  --text-color: #333;
+  --header-bg: #f1f1f1;
+  --card-bg: #ffffff;
+  --card-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  --link-color: #000000;
+  --link-hover-color: #242121fb;
+  --border-color: #ddd;
+}
+
+.dark {
+  --bg-color: #222;
+  --text-color: #f9f9f9;
+  --header-bg: #333;
+  --card-bg: #444;
+  --card-shadow: 0 2px 5px rgba(255,255,255,0.1);
+  --link-color: #ffffff;
+  --link-hover-color: #ffffffc2;
+  --border-color: #555;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+header {
+  background-color: var(--header-bg);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+nav {
+  display: flex;
+  gap: 1.5rem;
+}
+
+nav a {
+  color: var(--link-color);
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+}
+
+nav a:hover {
+  color: var(--link-hover-color);
+}
+
+nav a.active::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: var(--link-color);
+  bottom: -5px;
+  left: 0;
+}
+
+main {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 2rem;
+}
+
+.toggle-container {
+  display: flex;
+  align-items: center;
+}
+
+.toggle {
+  position: relative;
+  width: 60px;
+  height: 30px;
+  background-color: #ccc;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-left: 10px;
+}
+
+.toggle.active {
+  background-color: #87c0e6;
+}
+
+.toggle-slider {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 24px;
+  height: 24px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.3s;
+}
+
+.toggle.active .toggle-slider {
+  transform: translateX(30px);
+}
+
+/* Hero section styles */
+.hero {
+  text-align: center;
+  margin: 3rem 0;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  color: var(--text-color);
+  opacity: 0.8;
+}
+
+/* Card styles for content */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.card {
+  background-color: var(--card-bg);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card a {
+  color: var(--link-color);
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+}
+
+.card a:hover {
+  color: var(--link-hover-color);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.card-image {
+  width: 100%;
+  height: 200px;
+  background-color: #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #999;
+}
+
+.card-content {
+  padding: 1.5rem;
+}
+
+.card h3 {
+  margin-top: 0;
+}
+
+/* Blog-specific styles */
+.blog-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.blog-post {
+  background-color: var(--card-bg);
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: var(--card-shadow);
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+
+.blog-post:hover {
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  transform: translateY(-4px);
+}
+
+.blog-post h2 {
+  margin-top: 0;
+  font-size: 1.8rem;
+}
+
+.blog-post h2 a {
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+.blog-post h2 a:hover {
+  color: var(--link-color);
+}
+
+.blog-meta {
+  font-size: 0.9rem;
+  color: var(--text-color);
+  opacity: 0.6;
+  margin-bottom: 1rem;
+}
+
+.blog-post p {
+  line-height: 1.7;
+}
+
+.blog-post a, a:visited, a:active {
+  color: #25caeb; 
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+.blog-post a:hover {
+  color: #1d8e99; 
+  text-decoration: underline;
+}
+
+.blog-post-full {
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: var(--card-background);
+  border-radius: 12px;
+  box-shadow: var(--card-shadow);
+}
+
+.blog-post-full h1 {
+  margin-bottom: 0.5rem;
+  font-size: 2rem;
+}
+
+.blog-meta {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+.blog-content p {
+  margin: 1rem 0;
+  line-height: 1.6;
+}
+
+/* Footer styles */
+footer {
+  text-align: center;
+  padding: 2rem;
+  margin-top: 4rem;
+  background-color: var(--header-bg);
+  color: var(--text-color);
+}
