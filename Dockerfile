@@ -1,5 +1,5 @@
 FROM nginx:alpine
-COPY site/ /usr/share/nginx/html
+COPY _site/ /usr/share/nginx/html
 
 #HTTP Basic Auth
 RUN apk add --no-cache apache2-utils
