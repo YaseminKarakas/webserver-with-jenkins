@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     environment {
-        AWS_REGION = 'eu-west-1'                  // Change to your AWS region
-        ECR_REGISTRY = '767397888348.dkr.ecr.eu-west-1.amazonaws.com'  // Your AWS Account ECR URI
+        AWS_REGION = 'eu-central-1'                  // Change to your AWS region
+        ECR_REGISTRY = '767397888348.dkr.ecr.eu-central-1.amazonaws.com'  // Your AWS Account ECR URI
         ECR_REPO = 'webserver-iac'               // Your ECR repo name
         IMAGE_TAG = "latest"
     }

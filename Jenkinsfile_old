@@ -2,10 +2,10 @@ pipeline {
   agent any
 
   environment {
-    AWS_REGION = 'eu-west-1'
-    AWS_ACCOUNT_ID = '123456789012'
-    IMAGE_NAME = 'webapp'
-    AWS_CREDENTIALS = credentials('aws-creds-id')
+    AWS_REGION = 'eu-central-1'
+    AWS_ACCOUNT_ID = '767397888348'
+    IMAGE_NAME = 'webserver'
+    AWS_CREDENTIALS = credentials('aws-creds')
     ECR_REPO = "${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/${IMAGE_NAME}"
   }
 
