@@ -43,7 +43,7 @@ pipeline {
 
         stage('Deploy to ECS') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'aws-ecr-creds', usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY')]) {
+                withAWS(credentials: 'aws-creds', region: 'eu-central-1') {
                     sh '''
                       aws ecs update-service --cluster ecs-cluster-webserver-iac --service webserver-ecs-service --force-new-deployment --region $AWS_REGION
                     '''
