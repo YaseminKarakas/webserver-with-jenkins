@@ -11,9 +11,10 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                checkout scm
+                git url: 'https://github.com/YaseminKarakas/webserver-with-jenkins.git', branch: 'main'
             }
         }
+  
 
         stage('Build Docker Image') {
             steps {
@@ -25,11 +26,9 @@ pipeline {
 
         stage('Login to ECR') {
             steps {
-                withAWS(credentials: 'aws-creds', region: 'eu-central-1') {
-                    sh '''
-                        aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $ECR_REGISTRY
-                    '''
-                }
+                sh '''
+                    aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $ECR_REGISTRY
+                '''
             }
         }
 
@@ -43,12 +42,15 @@ pipeline {
 
         stage('Deploy to ECS') {
             steps {
-                withAWS(credentials: 'aws-creds', region: 'eu-central-1') {
-                    sh '''
-                      aws ecs update-service --cluster ecs-cluster-webserver-iac --service webserver-ecs-service --force-new-deployment --region $AWS_REGION
-                    '''
-                }
+                sh '''
+                aws ecs update-service \
+                    --cluster ecs-cluster-webserver-iac \
+                    --service webserver-ecs-service \
+                    --force-new-deployment \
+                    --region eu-central-1
+                '''
             }
         }
+
     }
 }
